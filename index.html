@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovalWeb: Personal Website</title>
+    <link rel="shortcut icon" href="./resources/icon.ico">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
+    <!-- scripts -->
+    <script>
+
+        /**Navbar Toggle for Mobile */
+        function toggleMobile() {
+            const obj = document.querySelector(".navbar");
+            obj.classList.toggle("toggle");
+        }
+
+        /**Render Page */
+        function render(web) {
+            const rendr = document.querySelector(".webpage");
+
+            fetch(`./pages/${web}.html`)
+            .then(res => res.text())
+            .then(value => {
+                rendr.innerHTML=value;
+            })
+            .catch((err) => {
+                rendr.innerHTML="Not Found: 404";
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            render("home");
+        });
+    </script>
+
+    <!-- shop-scripts -->
+    <script>
+
+        /**Products Json */
+        let productsJson = [];
+
+        try {
+            fetch("./products.json").then(res => res.json())
+            .then((products) => {
+                products.forEach((product) => {
+                    productsJson.push(product);
+                });
+            });
+        } catch(err) {}
+
+        /**Create Product element */
+        function createProduct(href, name, image, price, discount) {
+            if (discount) {
+                const card = document.createElement("div");
+
+                card.innerHTML = `
+                    <nav>
+                        <a href="${href}">
+                        <img class="image" src="${image}" alt="" draggable="false" loading="lazy" />
+                        <div class="card-content">
+                            <h2 class="title">${name}</h2>
+                            <h1 class="price">Rp. ${price.toLocaleString("id-ID")}</h1>
+                            <h3 class="discount">Rp. ${discount.toLocaleString("id-ID")}</h3>
+                        </div>
+                        </a>
+                    </nav>
+                `;
+                card.classList.add("card");
+
+                return card;
+            }
+            else {
+                const card = document.createElement("div");
+
+                card.innerHTML = `
+                    <nav>
+                        <a href="${href}">
+                        <img class="image" src="${image}" alt="" draggable="false" loading="lazy" />
+                        <div class="card-content">
+                            <h2 class="title">${name}</h2>
+                            <h1 class="price">Rp. ${price.toLocaleString("id-ID")}</h1>
+                        </div>
+                        </a>
+                    </nav>
+                `;
+                card.classList.add("card");
+
+                return card;
+            }
+        }
+
+        /**Get all Products Element */
+        function getProducts() {
+            let products = [];
+
+            for (const product of productsJson) {
+                const card = createProduct(product.url, product.name, product.image, product.price, product.discount);
+                products.push(card);
+            }
+
+            return products;
+        }
+
+        /**Set Products to HTML */
+        function setProducts() {
+            const container = document.querySelector(".products").querySelector(".card-container");
+
+            for (const product of getProducts()) {
+                container.appendChild(product);
+            }
+        }
+
+        /**Render Shop */
+        function renderShop() {
+            const rendr = document.querySelector(".webpage");
+
+            fetch(`./pages/shop.html`)
+            .then(res => res.text())
+            .then(value => {
+                rendr.innerHTML=value;
+            })
+            .then(() => {
+                setProducts();
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- web-page -->
+    <div class="webpage"></div>
+
+    <!-- navigation bar -->
+    <div class="navbar">
+        <nav class="mobile">
+            <div class="brand">
+                <div class="title">Web</div>
+            </div>
+            <ul class="buttons">
+                <li class="home"><a onclick="render(`home`)" href="#home">Home</a></li>
+                <li class="shop"><a onclick="renderShop()">Shop</a></li>
+                <li class="about"><a onclick="render(`home`)" href="#about">About</a></li>
+                <li class="mini-projects"><a onclick="render(`home`)" href="#home">Mini Project</a></li>
+            </ul>
+        </nav>
+        <nav class="wrapper">
+            <div class="brand">
+                <div class="title">NovalWeb</div>
+            </div>
+            <ul class="contents">
+                <li class="home"><a onclick="render(`home`)" href="#home">Home</a></li>
+                <li class="shop"><a onclick="renderShop()">Shop</a></li>
+                <li class="about"><a onclick="render(`home`)" href="#about">About</a></li>
+                <li class="mini-projects"><a onclick="render(`home`)" href="#home">Mini Project</a></li>
+            </ul>
+            <div class="mobilemode" onClick="toggleMobile()"><i class="bx bx-list-ul"></i></div>
+        </nav>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+        <nav class="wrapper">
+            <div class="brand">
+                <div class="title">NovalWeb</div>
+                <p class="description">Terima kasih telah meluangkan waktu untuk mengunjungi personal website saya. Saya menghargai setiap kunjungan Anda dan harap informasi yang saya sajikan bermanfaat dan memberi wawasan lebih tentang diri saya dan perjalanan pembelajaran saya.</p>
+                <ul class="links">
+                    <li class="instagram"><a href="https://instagram.com/nopal_psatir077"><i class="bx bxl-instagram"></i>Instagram</a></li>
+                    <li class="whatsapp"><a href="https://wa.me/6281326039023"><i class="bx bxl-whatsapp"></i>WhatsApp</a></li>
+                    <li class="github"><a href="https://github.com/novalbilek"><i class="bx bxl-github"></i>Github</a></li>
+                    <li class="discord"><a href="https://discord.gg/FMpeBhCh"><i class="bx bxl-discord-alt"></i>Discord</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

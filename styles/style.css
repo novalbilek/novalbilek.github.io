@@ -1,0 +1,349 @@
+@font-face {
+    font-family: "Roboto";
+    src: url(../resources/fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: "Roboto Light";
+    src: url(../resources/fonts/Roboto/Roboto-Light.ttf);
+}
+@font-face {
+    font-family: "Roboto Small";
+    src: url(../resources/fonts/Roboto/Roboto-Thin.ttf);
+}
+@font-face {
+    font-family: "Roboto Medium";
+    src: url(../resources/fonts/Roboto/Roboto-Medium.ttf);
+}
+@font-face {
+    font-family: "Roboto Large";
+    src: url(../resources/fonts/Roboto/Roboto-Black.ttf);
+}
+
+@font-face {
+    font-family: "Coves Bold";
+    src: url(../resources/fonts/Coves/CovesBold.otf);
+}
+@font-face {
+    font-family: "Coves Light";
+    src: url(../resources/fonts/Coves/CovesLight.otf);
+}
+
+*, body {
+    margin: 0;
+    padding: 0;
+    font-size: "Roboto";
+}
+
+.webpage embed {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+    display: flex;
+    font-family: "Coves Light";
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    top: 0px;
+    left: 0px;
+}
+
+.navbar .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar .brand {
+    display: flex;
+    position: relative;
+    width: 50px;
+    left: 55px;
+}
+
+.navbar .brand .title {
+    -webkit-user-select: none;
+    user-select: none;
+    font-family: "Coves Bold";
+    position: relative;
+    top: 7px;
+    font-size: 35px;
+}
+
+.navbar .brand .title:hover {
+    transition: 1s;
+    color: #3ad425;
+}
+
+.navbar .contents {
+    display: flex;
+    position: relative;
+    right: 50px;
+    list-style: none;
+}
+
+.navbar .contents li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar .contents li a {
+    -webkit-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    padding: 3px;
+    border-radius: 3%;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar .contents li a:hover {
+    cursor: default;
+    transition: 1s;
+    color: rgb(130, 130, 130);
+    border-bottom: 2px solid rgb(130, 130, 130);
+}
+
+.navbar .mobilemode {
+    display: none;
+    position: relative;
+    padding: 2px;
+    right: 20px;
+    font-size: 25px;
+    border-radius: 10%;
+}
+
+.navbar .mobile {
+    display: none;
+}
+
+.navbar .mobilemode:hover {
+    background-color: rgba(56, 56, 56, 0.401);
+    transition: 0.5s;
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar .brand {
+        width: 30px;
+        left: 30px;
+    }
+
+    .navbar .brand .title {
+        position: relative;
+        top: 5px;
+        font-size: 20px;
+    }
+
+    .navbar .brand .icon {
+        position: relative;
+        top: 2px;
+        width: 25px;
+    }
+
+    .navbar .contents {
+        display: none;
+    }
+
+    .navbar.toggle .brand {
+        opacity: 0;
+    }
+
+    .navbar .mobilemode {
+        display: block;
+    }
+
+    .navbar.toggle .mobile {
+        display: flex;
+        height: 100vh;
+        width: 500px;
+        background-color: rgba(135, 135, 135, 0.75);
+    }
+
+    .navbar.toggle .mobile .buttons {
+        position: absolute;
+        top: 15vh;
+        left: 20px;
+        list-style: none;
+    }
+
+    .navbar.toggle .mobile .buttons li {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .navbar.toggle .mobile .buttons li a {
+        font-size: 20px;
+        border-radius: 5px;
+        padding: 10px;
+        padding-left: 40px;
+        padding-right: 40px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .navbar.toggle .mobile .logo {
+        display: flex;
+        position: absolute;
+        top: 1vh;
+        left: 20px;
+    }
+
+    .navbar.toggle .mobile .logo .icon {
+        width: 35px;
+    }
+
+    .navbar.toggle .mobile .logo .title {
+        position: relative;
+        font-family: "Coves Bold";
+        font-size: 25px;
+        top: 7px;
+    }
+}
+
+/* Footer */
+
+.footer {
+    display: flex;
+    font-family: "Coves Light";
+    width: 100%;
+    height: 230px;
+    background-color: #252525;
+}
+
+.footer .wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.footer .brand {
+    position: relative;
+    text-align: center;
+    top: 15%;
+    height: 60%;
+    color: #fcfcfc;
+}
+
+.footer .title {
+    font-family: "Coves Bold";
+    font-size: 230%;
+    text-shadow: 1px 1px 1px #4e0eff;
+}
+
+.footer .title:hover {
+    transition: 2s;
+    color: #4e0eff;
+    text-shadow: 1px 1px 1px #0a0057;
+}
+
+.footer .description {
+    position: relative;
+    font-family: "Coves Light";
+    font-size: 110%;
+    color: #eeeeee;
+    width: 60vi;
+    top: 25px;
+    left: 20vi;
+}
+
+.footer .links {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    list-style: none;
+    top: 35px;
+}
+
+.footer .links li {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.footer .links li a {
+    font-family: "Roboto Medium";
+    text-decoration: none;
+    font-size: 110%;
+    color: #5f25ff;
+}
+
+.footer .links li a:hover {
+    transition: 0.5s;
+    color: aliceblue;
+    text-shadow: 1px 1px #4e0eff;
+}
+
+@media (max-width: 1030px) {
+    .footer .description {
+        width: 80vi;
+        left: 10vi;
+    }
+}
+
+@media (max-width: 840px) {
+    .footer {
+        height: 250px;
+    }
+}
+
+@media (max-width: 630px) {
+    .footer {
+        height: 280px;
+    }
+}
+
+@media (max-width: 575px) {
+    .footer .description {
+        left: 10vi;
+    }
+}
+
+@media (max-width: 513px) {
+    .footer {
+        height: 300px;
+    }
+}
+
+@media (max-width: 450px) {
+    .footer .links li {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+}
+
+@media (max-width: 535px) {
+    .footer {
+        height: 470px;
+    }
+
+    .footer .links {
+        display: block;
+    }
+
+    .footer .links li {
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+
+    .footer .links li a {
+        font-size: larger;
+    }
+}
+
+@media (max-width: 410px) {
+    .footer {
+        height: 485px;
+    }
+
+    .footer .links {
+        top: 35px;
+    }
+}
+
+@media (max-width: 370px) {
+    .footer .description {
+        width: auto;
+        left: 0;
+    }
+}
