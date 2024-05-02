@@ -12,6 +12,15 @@
     <!-- scripts -->
     <script>
 
+        const docTitle = document.title;
+        window.addEventListener("blur", () => {
+            document.title = "Jangan Tingalkan Aku😭";
+        });
+
+        window.addEventListener("focus", () => {
+            document.title = docTitle;
+        });
+
         /**Navbar Toggle for Mobile */
         function toggleMobile() {
             const obj = document.querySelector(".navbar");
